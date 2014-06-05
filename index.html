@@ -45,20 +45,19 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 	   $('#NewTab1').click(function() {
-		var myHref=$(this).attr('href');
-	        window.location.href=myHref;
+
+	        window.open($(this).prop('href'));
 	        return false;
 	   });
-
 	   $('#NewTab2').click(function() {
-	       var myHref=$(this).attr('href');
-	        window.location.href=myHref;
+
+	        window.open($(this).prop('href'));
 	        return false;
 	   });
 		
 	});
-
 </script>
+
 </head>
 
 
@@ -1130,6 +1129,7 @@
 	
 	<!-- CONTACT FORM-->
 	<div class="row">
+
 		<form role="form" action="#" class="contact-form">
 			<div class="wow fadeInLeft animated" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
 			<div class="col-lg-4 col-sm-4">
@@ -1148,6 +1148,7 @@
 			</div>
 			<button class="btn btn-primary custom-button red-btn wow fadeInLeft animated" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s" type="submit">Send Message</button>
 		</form>
+        	
 	</div>
 	<!-- / END CONTACT FORM-->
 </div> <!-- / END CONTAINER -->
