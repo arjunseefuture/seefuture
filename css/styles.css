@@ -529,7 +529,7 @@ input:focus {
 .students {
 	padding-bottom: 100px;
 	overflow: hidden;
-	background: #FFFFFF;
+	background: #fff;
 }
 /* FOCUS BOX */
 .students-box {
@@ -802,11 +802,12 @@ input:focus {
 .client-list {
 	padding-top: 5px;
 	margin-bottom: -17px;
+
 }
 .client-list ul li {
 	vertical-align: middle;
 	display: inline-block;
-	margin-right: 24px;
+	margin-right: 50px;
 	padding-bottom: 15px;
 	text-transform: uppercase;
 }
