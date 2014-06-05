@@ -45,13 +45,14 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 	   $('#NewTab1').click(function() {
-
-	        window.open($(this).prop('href'));
+		var myHref=$(this).attr('href');
+	        window.location.href=myHref;
 	        return false;
 	   });
-	   $('#NewTab2').click(function() {
 
-	        window.open($(this).prop('href'));
+	   $('#NewTab2').click(function() {
+	       var myHref=$(this).attr('href');
+	        window.location.href=myHref;
 	        return false;
 	   });
 		
