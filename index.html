@@ -42,6 +42,7 @@
 
 <!-- JQUERY -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 	   $('#NewTab1').click(function() {
@@ -56,6 +57,72 @@
 	   });
 		
 	});
+</script>
+    
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#submit_btn").click(function() { 
+        //get input field values
+        var user_name       = $('input[name=name]').val(); 
+        var user_email      = $('input[name=email]').val();
+        var user_phone      = $('input[name=phone]').val();
+        var user_message    = $('textarea[name=message]').val();
+        
+        //simple validation at client's end
+        //we simply change border color to red if empty field using .css()
+        var proceed = true;
+        if(user_name==""){ 
+            $('input[name=name]').css('border-color','red'); 
+            proceed = false;
+        }
+        if(user_email==""){ 
+            $('input[name=email]').css('border-color','red'); 
+            proceed = false;
+        }
+        if(user_phone=="") {    
+            $('input[name=phone]').css('border-color','red'); 
+            proceed = false;
+        }
+        if(user_message=="") {  
+            $('textarea[name=message]').css('border-color','red'); 
+            proceed = false;
+        }
+
+        //everything looks good! proceed...
+        if(proceed) 
+        {
+            //data to be sent to server
+            post_data = {'userName':user_name, 'userEmail':user_email, 'userPhone':user_phone, 'userMessage':user_message};
+            
+            //Ajax post data to server
+            $.post('../contact_me.php', post_data, function(response){  
+                
+                //load json data from server and output message     
+                if(response.type == 'error')
+                {
+                    output = '<div class="error">'+response.text+'</div>';
+                }else{
+                
+                    output = '<div class="success">'+response.text+'</div>';
+                    
+                    //reset values in all input fields
+                    $('.form-control input-box').val(''); 
+                    $('.form-control textarea-box').val(''); 
+                }
+                
+                $("#result").hide().html(output).slideDown();
+            }, 'json');
+            
+        }
+    });
+    
+    //reset previously set border colors and hide all message on .keyup()
+    $(".form-control input-box, .form-control textarea-box").keyup(function() { 
+        $(".form-control input-box, .form-control textarea-box").css('border-color',''); 
+        $("#result").slideUp();
+    });
+    
+});
 </script>
 
 </head>
@@ -1129,24 +1196,24 @@
 	
 	<!-- CONTACT FORM-->
 	<div class="row">
-
-		<form role="form" action="#" class="contact-form">
+        <div id="result"></div>
+		<form role="form" id="form-control" action="#" class="contact-form">
 			<div class="wow fadeInLeft animated" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
 			<div class="col-lg-4 col-sm-4">
-				<input type="text" name="name" placeholder="Your Name" class="form-control input-box">
+				<input type="text" name="name" placeholder="Your Name" id="name" class="form-control input-box">
 			</div>
 			<div class="col-lg-4 col-sm-4">
-				<input type="email" name="email" placeholder="Your Email" class="form-control input-box">
+				<input type="email" name="email" placeholder="Your Email" id="email" class="form-control input-box">
 			</div>
 			<div class="col-lg-4 col-sm-4">
-				<input type="text" name="subject" placeholder="Subject" class="form-control input-box">
+				<input type="text" name="subject" placeholder="Your Phone" id="phone" class="form-control input-box">
 			</div>
 			</div>
 			
 			<div class="col-md-12 wow fadeInRight animated" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s">
-				<textarea name="message" class="form-control textarea-box" placeholder="Your Message"></textarea>
+				<textarea name="message" class="form-control textarea-box" placeholder="Your Message" id="message"></textarea>
 			</div>
-			<button class="btn btn-primary custom-button red-btn wow fadeInLeft animated" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s" type="submit">Send Message</button>
+			<button id="submit_btn" contact class="btn btn-primary custom-button red-btn wow fadeInLeft animated" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s" type="submit">Send Message</button>
 		</form>
         	
 	</div>

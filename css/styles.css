@@ -1081,6 +1081,10 @@ input:focus {
 	float: right;
 }
 
+.success{ background: #CFFFF5;padding: 10px; margin-bottom: 10px; border: 1px solid #B9ECCE; border-radius: 5px; font-weight: normal; }
+.error{ background: #FFDFDF; padding: 10px; margin-bottom: 10px; border: 1px solid #FFCACA; border-radius: 5px; font-weight: normal;}
+
+
 /* ----------------------------------------*/
 /*   SECTION:  FOOTER                        */
 /* ----------------------------------------*/
@@ -1530,47 +1534,4 @@ width: -webkit-calc(100% / 2);
 }
 .purchase-now .red-btn:hover {
 	background: #bf3928;
-}
-
-
-
-/* ========================================= */
-/* -----------------------------------------*/
-/*   SINGLE PROJECT PAGE                     */
-/* -----------------------------------------*/
-/* ========================================= */
-
-.single-project {
-	text-align: left;
-	margin-bottom: 25px;
-}
-.single-project .project-image {
-	width: 100%;
-	float: left;
-	text-align: left;
-	margin-bottom: 25px;
-}
-.single-project h3 {
-	margin-bottom: 10px;
-	padding-bottom: 7px;
-	line-height: 40px;
-	border-bottom: 1px dotted #dadada;
-}
-.single-project .project-description {
-	margin-bottom: 25px;
-}
-.single-project .button {
-	margin-left: 0;
-}
-.single-project .project-information {
-	margin-bottom: 10px;
-}
-.single-project .project-information ul li {
-	border-bottom: 1px dotted #dadada;
-	padding-bottom: 5px;
-	margin-top: 10px;
-}
-.single-project .project-information ul li span {
-	font-weight: 700;
-	margin-right: 5px;
 }
